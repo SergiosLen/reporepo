@@ -1,5 +1,11 @@
 # priceSearch
 
+A small flask api in Python 3 for digest data from csv and json. 
+
+## Install
+
+Use of flask `pip install flask`
+
 ## Running
 ### To run the application 
 * change directory into priceSearch and run `export FLASK_APP=priceSearch.py` 
