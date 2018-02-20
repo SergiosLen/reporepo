@@ -74,7 +74,7 @@ def parse_dict(dictionary):
 
 data={}
 data_names=['id','name','brand','retailer','price','in_stock']
-
+# read the json and storing in a dictionary
 with urllib.request.urlopen("https://s3-eu-west-1.amazonaws.com/pricesearcher-code-tests/python-software-developer/products.json") as url:
     data_S3 = json.loads(url.read().decode())
     for dat in data_S3:
@@ -82,9 +82,7 @@ with urllib.request.urlopen("https://s3-eu-west-1.amazonaws.com/pricesearcher-co
         data[dat['id']]={}#OrderedDict()
         for name in data_names:
             data[dat['id']][name]=dat[name]
-        # print (dat,type(dat))
-    # print(data)
-# print(len(data))
+# read the csv and storing in the dictionary
 with gzip.open('products.csv.gz', 'rt') as fop:
     reader=csv.reader(fop)#,quotechar='"',quoting=csv.QUOTE_NONE)
     for lin in reader:
@@ -94,5 +92,5 @@ with gzip.open('products.csv.gz', 'rt') as fop:
         product_id,product_values=product_line.get_data()
         # print(product_id,product_values,lin)
         data[product_id]=product_values
-# print (len(data))
 
+#  data is the dictionary used by the api
